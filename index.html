@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>랜덤 색상 팔레트</title>
+    <title>나만의 키보드 커스텀</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>랜덤 색상 팔레트 생성기</h1>
-        <div class="palette-container">
-            <div class="color-box">
-                <p class="color-code">#FFFFFF</p>
+        <h1>나만의 키보드를 만들어 보세요!</h1>
+
+        <div class="keyboard-preview">
+            <img id="housing-img" src="images/housing_black.png" alt="Keyboard Housing" class="keyboard-layer">
+            <img id="keycaps-img" src="images/keycaps_black.png" alt="Keycaps" class="keyboard-layer">
             </div>
-            <div class="color-box">
-                <p class="color-code">#FFFFFF</p>
+
+        <div class="options">
+            <div class="option-group">
+                <h2>하우징 색상</h2>
+                <button class="option-btn" data-part="housing" data-color="black">🖤 블랙</button>
+                <button class="option-btn" data-part="housing" data-color="white">🤍 화이트</button>
             </div>
-            <div class="color-box">
-                <p class="color-code">#FFFFFF</p>
-            </div>
-            <div class="color-box">
-                <p class="color-code">#FFFFFF</p>
+
+            <div class="option-group">
+                <h2>키캡 색상</h2>
+                <button class="option-btn" data-part="keycaps" data-color="black">⚫ 블랙</button>
+                <button class="option-btn" data-part="keycaps" data-color="white">⚪ 화이트</button>
+                <button class="option-btn" data-part="keycaps" data-color="red">🔴 레드</button>
             </div>
         </div>
-        <button id="generate-btn">새로운 색상 만들기</button>
     </div>
 
     <script src="script.js"></script>
