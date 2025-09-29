@@ -1,31 +1,36 @@
-// HTML에서 필요한 요소들을 가져옵니다.
-const generateBtn = document.getElementById('generate-btn');
-const colorBoxes = document.querySelectorAll('.color-box');
+document.addEventListener('DOMContentLoaded', () => {
+    // HTML 요소들을 가져옵니다.
+    const housingImg = document.getElementById('housing-img');
+    const keycapsImg = document.getElementById('keycaps-img');
+    const optionButtons = document.querySelectorAll('.option-btn');
 
-// 랜덤한 16진수 색상 코드를 생성하는 함수
-function generateRandomHexColor() {
-    // '0123456789abcdef' 문자들 중에서 랜덤으로 6개를 뽑아 '#' 뒤에 붙입니다.
-    const hexChars = '0123456789abcdef';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += hexChars[Math.floor(Math.random() * 16)];
+    // 초기 활성 버튼 설정 (선택된 옵션을 시각적으로 표시)
+    function setActiveButton(part, color) {
+        document.querySelectorAll(`.option-btn[data-part="${part}"]`).forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`.option-btn[data-part="${part}"][data-color="${color}"]`).classList.add('active');
     }
-    return color;
-}
 
-// 모든 색상 박스를 새로운 랜덤 색상으로 업데이트하는 함수
-function updateColors() {
-    colorBoxes.forEach(box => {
-        const newColor = generateRandomHexColor();
-        // 박스의 배경색을 변경합니다.
-        box.style.backgroundColor = newColor;
-        // 박스 안의 텍스트(색상 코드)를 변경합니다.
-        box.querySelector('.color-code').textContent = newColor;
+    // 페이지 로드 시 초기 상태 설정
+    setActiveButton('housing', 'black'); // 초기 하우징은 블랙
+    setActiveButton('keycaps', 'black'); // 초기 키캡은 블랙
+
+    // 각 옵션 버튼에 클릭 이벤트 리스너를 추가합니다.
+    optionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const part = button.dataset.part; // 'housing' 또는 'keycaps'
+            const color = button.dataset.color; // 'black', 'white', 'red'
+
+            // 선택된 부분(part)에 따라 이미지의 src를 변경합니다.
+            if (part === 'housing') {
+                housingImg.src = `images/housing_${color}.png`;
+            } else if (part === 'keycaps') {
+                keycapsImg.src = `images/keycaps_${color}.png`;
+            }
+
+            // 현재 클릭된 버튼에 'active' 클래스를 추가하고, 다른 버튼에서는 제거합니다.
+            setActiveButton(part, color);
+        });
     });
-}
-
-// '새로운 색상 만들기' 버튼을 클릭했을 때 updateColors 함수를 실행하도록 설정합니다.
-generateBtn.addEventListener('click', updateColors);
-
-// 페이지가 처음 로드될 때도 한번 실행해서 초기 색상을 보여줍니다.
-updateColors();
+});
