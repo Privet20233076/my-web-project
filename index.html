@@ -2,10 +2,30 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>나의 웹사이트</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 색상 팔레트</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>안녕하세요!</h1>
-    <p>깃허브 웹 기능만으로 만들었어요.</p>
+    <div class="container">
+        <h1>랜덤 색상 팔레트 생성기</h1>
+        <div class="palette-container">
+            <div class="color-box">
+                <p class="color-code">#FFFFFF</p>
+            </div>
+            <div class="color-box">
+                <p class="color-code">#FFFFFF</p>
+            </div>
+            <div class="color-box">
+                <p class="color-code">#FFFFFF</p>
+            </div>
+            <div class="color-box">
+                <p class="color-code">#FFFFFF</p>
+            </div>
+        </div>
+        <button id="generate-btn">새로운 색상 만들기</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
